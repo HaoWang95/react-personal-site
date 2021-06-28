@@ -1,24 +1,59 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Note from './components/Note';
+import Create from './components/Create';
+import Layout from './components/Layout';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core'
+
+// Always create the main theme under App.js, the theme will be applied globally
+// The objects in createMuiTheme represents the theme config we want to define
+const AppTheme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#1cb88e"
+    },
+    secondary: {
+      main: "#24c4d6"
+    }
+  },
+  typography: {
+    fontFamily: 'Quicksand',
+    fontWeightLight: 200,
+    fontWeightRegular: 400,
+    fontWeightMedium: 550,
+    fontWeightBold: 800
+  },
+
+  transitions: {
+    duration: {
+      shortest: 200,
+      shorter: 250,
+      short: 350,
+      standard: 500,
+      complex: 600,
+      enteringScreen: 250,
+      leavingScreen: 200
+    }
+  }
+
+})
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={AppTheme}>
+      <Router>
+        <Layout>
+          <Switch>
+            <Route exact path="/">
+              <Note />
+            </Route>
+            <Route path="/create">
+              <Create />
+            </Route>
+          </Switch>
+        </Layout>
+      </Router>
+    </ThemeProvider>
   );
 }
 

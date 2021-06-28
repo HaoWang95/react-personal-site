@@ -1,0 +1,28 @@
+{
+  "notes": [
+    {
+      "title": "Complete my ninja training",
+      "detail": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took.",
+      "category": "work",
+      "id": 2
+    },
+    {
+      "title": "Order a pizza!",
+      "detail": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+      "category": "todo",
+      "id": 3
+    },
+    {
+      "title": "Test react with material ui",
+      "detail": "Use material UI library to build React components",
+      "category": "work",
+      "id": 4
+    },
+    {
+      "title": "title name",
+      "detail": "detail info",
+      "category": "todo",
+      "id": 5
+    }
+  ]
+}
