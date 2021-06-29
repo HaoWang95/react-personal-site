@@ -29,8 +29,13 @@ const menuItems=[
     },
     {
         text: 'Create note/plan',
-        icon: <AddCircleOutlined color='secondary' />,
+        icon: <AddCircleOutlined color='primary'/>,
         path:'/create'
+    },
+    {
+        text:'Todo Sample',
+        icon:'',
+        path:'/todo'
     }
 ]
 
