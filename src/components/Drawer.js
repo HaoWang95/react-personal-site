@@ -4,7 +4,8 @@ import { makeStyles } from "@material-ui/core";
 import List from '@material-ui/core/List';
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
-import { AddCircleOutlined, SubjectOutlined } from "@material-ui/icons";
+import { AddCircleOutlined, SubjectOutlined} from "@material-ui/icons";
+import TrackChangesSharp from '@material-ui/icons/TrackChangesSharp'
 import { useHistory, useLocation } from "react-router-dom";
 
 const drawerWidth = 240
@@ -34,7 +35,7 @@ const menuItems=[
     },
     {
         text:'Todo Sample',
-        icon:'',
+        icon: <TrackChangesSharp color='secondary' />,
         path:'/todo'
     }
 ]
