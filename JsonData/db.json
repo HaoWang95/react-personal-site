@@ -29,6 +29,18 @@
       "detail": "Update the UI to be draggable",
       "category": "todo",
       "id": 6
+    },
+    {
+      "title": "React with microfront end",
+      "detail": "Use react library to build some frontend projects",
+      "category": "todo",
+      "id": 7
+    },
+    {
+      "title": "Meeting with Johan",
+      "detail": "A meeting is scheduled at 4PM, do not forget about it",
+      "category": "reminder",
+      "id": 8
     }
   ]
 }
