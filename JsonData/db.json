@@ -23,6 +23,12 @@
       "detail": "detail info",
       "category": "todo",
       "id": 5
+    },
+    {
+      "title": "Change React app",
+      "detail": "Update the UI to be draggable",
+      "category": "todo",
+      "id": 6
     }
   ]
 }

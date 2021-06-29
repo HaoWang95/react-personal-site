@@ -25,7 +25,7 @@ export default function Note() {
                 <Grid container spacing={3}>
                     {noteList.map(note => {
                         return (
-                            <Grid item key={note.id} xs={12} sm={6} md={4} lg={2}>
+                            <Grid item key={note.id} xs={12} sm={6} md={4} lg={4}>
                                 <NoteCard note={note} handleDelete={handleDelete}/>
                             </Grid>
                         )

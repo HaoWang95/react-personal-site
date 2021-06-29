@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Note from './components/Note';
 import Create from './components/Create';
 import Layout from './components/Layout';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core'
+import { createMuiTheme, ThemeProvider } from '@material-ui/core';
 
 // Always create the main theme under App.js, the theme will be applied globally
 // The objects in createMuiTheme represents the theme config we want to define
