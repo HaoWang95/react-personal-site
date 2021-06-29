@@ -4,6 +4,7 @@ import Note from './components/Note';
 import Create from './components/Create';
 import Layout from './components/Layout';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core';
+import ToDo from './components/ToDo';
 
 // Always create the main theme under App.js, the theme will be applied globally
 // The objects in createMuiTheme represents the theme config we want to define
@@ -49,6 +50,9 @@ function App() {
             </Route>
             <Route path="/create">
               <Create />
+            </Route>
+            <Route path="todo">
+              <ToDo />
             </Route>
           </Switch>
         </Layout>

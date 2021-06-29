@@ -64,6 +64,5 @@ export default function Note() {
             </Container>
         )
     }
-
     return renderNoteList()
 }
