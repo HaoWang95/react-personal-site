@@ -23,7 +23,7 @@ export default function Note() {
 
     const handleOnDragEnd = (result) => {
         console.log(result);
-        if(!result.destination) return;
+        if (!result.destination) return;
         const [reorderedNoteList] = noteList.splice(result.source.index, 1);
         noteList.splice(result.destination.index, 0, reorderedNoteList);
         setNoteList(noteList);
@@ -45,9 +45,9 @@ export default function Note() {
                                                 <Grid
                                                     {...providedDraggable.draggableProps}
                                                     {...providedDraggable.dragHandleProps}
-                                                    ref={providedDraggable.innerRef} 
-                                                    item 
-                                                    key={note.id} 
+                                                    ref={providedDraggable.innerRef}
+                                                    item
+                                                    key={note.id}
                                                     xs={12} sm={6} md={4} lg={4}
                                                 >
                                                     <NoteCard note={note} handleDelete={handleDelete} />

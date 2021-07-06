@@ -34,7 +34,7 @@ const menuItems=[
         path:'/create'
     },
     {
-        text:'Todo Sample',
+        text:'Todo list',
         icon: <TrackChangesSharp color='secondary' />,
         path:'/todo'
     }
