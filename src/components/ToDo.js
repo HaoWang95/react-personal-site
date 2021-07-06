@@ -6,8 +6,6 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import CheckBox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
-import { width } from '@material-ui/system';
-import { BackgroundColor } from 'chalk';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -22,38 +20,37 @@ export default function ToDoList() {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
+        console.log('render start')
         fetch('https://jsonplaceholder.typicode.com/users/1/todos')
             .then((res) => res.json())
-            .then((jsonData) => {setItems(jsonData); console.log(jsonData)})
+            .then(
+                (jsonData) => {setItems(jsonData);})
             // make sure the data is valid then update the items
+        console.log('render end');
         return () => {}
     }, [])
 
-    const handleToggle = (value) => () => {
-        const currentIndex = checked.indexOf(value);
-        const newChecked = [...checked];
-        if (currentIndex === -1) {
-            newChecked.push(value);
-        } else {
-            newChecked.splice(currentIndex, 1);
-        }
-        setChecked(newChecked)
+    const handleToggle = (index) => {
+        let currentCheckedValue = checked.indexOf(index);
+        let checkedCopy = [...checked];
+        currentCheckedValue === -1 ? checkedCopy.push(index) : checkedCopy.splice(currentCheckedValue, 1)
+        setChecked(checkedCopy)
     }
     //test whether I can fetch the data
     return (
         <List className={classes.root}>
             {
-                items.map((item) => {
+                items.map((item, index) => {
                     let labelId = `checkbox-list-label-${item.id}`;
                     return (
-                        <ListItem key={item.id.toString()}>
+                        <ListItem key={index.toString()} onClick={() => handleToggle(index)}>
                             <ListItemIcon>
                                 <CheckBox
-                                    checked={false}
+                                    checked={checked.indexOf(index) !== -1}
                                     inputProps={{'aria-labelledby': labelId}}
                                 />
                             </ListItemIcon>
-                            <ListItemText id={labelId} primary={`Line Item ${item.title}`} />
+                            <ListItemText id={labelId} >{item.title}</ListItemText>
                         </ListItem>
                     )
                 })
