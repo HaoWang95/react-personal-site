@@ -22,7 +22,6 @@ export default function Note() {
     }
 
     const handleOnDragEnd = (result) => {
-        console.log(result);
         if (!result.destination) return;
         const [reorderedNoteList] = noteList.splice(result.source.index, 1);
         noteList.splice(result.destination.index, 0, reorderedNoteList);
@@ -38,7 +37,7 @@ export default function Note() {
                         {(provided) => (
                             <Grid container spacing={3} className="dndGrid" {...provided.droppableProps} ref={provided.innerRef} >
                                 {noteList.map((note, index) => {
-                                    console.log(note.id, index);
+                                    //console.log(note.id, index);
                                     return (
                                         <Draggable key={note.id.toString()} index={index} draggableId={note.id.toString()}>
                                             {(providedDraggable) => (

@@ -8,6 +8,8 @@ import CheckBox from '@material-ui/core/Checkbox';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import IconButton from '@material-ui/core/IconButton';
 import MoreHorizOutlinedIcon from '@material-ui/icons/MoreHorizOutlined';
+import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
+import Container from '@material-ui/core/Container';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -27,10 +29,10 @@ export default function ToDoList() {
         fetch('https://jsonplaceholder.typicode.com/users/1/todos')
             .then((res) => res.json())
             .then(
-                (jsonData) => {setItems(jsonData);})
-            // make sure the data is valid then update the items
+                (jsonData) => { setItems(jsonData); })
+        // make sure the data is valid then update the items
         console.log('render end');
-        return () => {}
+        return () => { }
     }, [])
 
     const handleToggle = (index) => {
@@ -48,35 +50,66 @@ export default function ToDoList() {
         // if the current index text is not selected, set it to normal text
         // if the current index text is selected, set it to <strike>
         return (
-            checked.indexOf(index) === -1 ? <>{text}</> : <strike>{text}</strike>
+            checked.indexOf(index) === -1 ? <>{index + 1}-{text}</> : <strike>{index + 1}-{text}</strike>
         )
     }
-    //test whether I can fetch the data
+
+
+    const handleOnDnd = (result) => {
+        if (!result.destination) return;
+        const [copyedList] = items.splice(result.source.index, 1);
+        items.splice(result.destination.index, 0, copyedList);
+        setItems(items);
+    }
+
     return (
-        <List className={classes.root}>
-            {
-                items.map((item, index) => {
-                    let labelId = `checkbox-list-label-${item.id}`;
-                    return (
-                        <ListItem key={index.toString()} onClick={() => handleToggle(index)}>
-                            <ListItemIcon>
-                                <CheckBox
-                                    checked={checked.indexOf(index) !== -1}
-                                    inputProps={{'aria-labelledby': labelId}}
-                                />
-                            </ListItemIcon>
-                            <ListItemText id={labelId} >
-                                {handleTextRender(index, item.title)}
-                            </ListItemText>
-                            <ListItemSecondaryAction>
-                                <IconButton edge="end" aria-label="detail">
-                                    <MoreHorizOutlinedIcon />
-                                </IconButton>
-                            </ListItemSecondaryAction>
-                        </ListItem>
-                    )
-                })
-            }
-        </List>
+        <Container>
+            <DragDropContext onDragEnd={handleOnDnd}>
+                <Droppable droppableId="itemlist">
+                    {
+                        (provided) => (
+                            <List className={classes.root} {...provided.droppableProps} ref={provided.innerRef}>
+                                {
+                                    items.map((item, index) => {
+                                        let labelId = `checkbox-list-label-${item.id}`;
+                                        return (
+                                            <Draggable key={index.toString()} index={index} draggableId={index.toString()}>
+                                                {
+                                                    (providedDraggable) => (
+                                                        <ListItem 
+                                                            {...providedDraggable.draggableProps}
+                                                            {...providedDraggable.dragHandleProps}
+                                                            ref={providedDraggable.innerRef}
+                                                            key={index.toString()} 
+                                                            onClick={() => handleToggle(index)}
+                                                        >
+                                                            <ListItemIcon>
+                                                                <CheckBox
+                                                                    checked={checked.indexOf(index) !== -1}
+                                                                    inputProps={{ 'aria-labelledby': labelId }}
+                                                                />
+                                                            </ListItemIcon>
+                                                            <ListItemText id={labelId} >
+                                                                {handleTextRender(index, item.title)}
+                                                            </ListItemText>
+                                                            <ListItemSecondaryAction>
+                                                                <IconButton edge="end" aria-label="detail">
+                                                                    <MoreHorizOutlinedIcon />
+                                                                </IconButton>
+                                                            </ListItemSecondaryAction>
+                                                        </ListItem>
+                                                    )
+                                                }
+                                            </Draggable>
+                                        )
+                                    })
+                                }
+                                {provided.placeholder}
+                            </List>
+                        )
+                    }
+                </Droppable>
+            </DragDropContext>
+        </Container >
     )
 }
