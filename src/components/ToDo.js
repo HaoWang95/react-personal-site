@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { makeStyles } from '@material-ui/styles';
+import { makeStyles, withStyles } from '@material-ui/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -17,7 +17,24 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.background.paper,
         maxWidth: 450
     }
-}))
+}));
+
+const StyledListItem = withStyles({
+    root:{
+        "&$selected":{
+            backgroundColor: "green",
+            color:"white"
+        },
+        "&$selected:hover":{
+            backgroundColor: "purple",
+            color: "white"
+        },
+        "&:hover":{
+            backgroundColor: "primary",
+        }
+    },
+    selected: false,
+})(ListItem);
 
 export default function ToDoList() {
     const classes = useStyles();
@@ -76,7 +93,7 @@ export default function ToDoList() {
                                             <Draggable key={index.toString()} index={index} draggableId={index.toString()}>
                                                 {
                                                     (providedDraggable) => (
-                                                        <ListItem 
+                                                        <StyledListItem
                                                             {...providedDraggable.draggableProps}
                                                             {...providedDraggable.dragHandleProps}
                                                             ref={providedDraggable.innerRef}
@@ -97,7 +114,7 @@ export default function ToDoList() {
                                                                     <MoreHorizOutlinedIcon />
                                                                 </IconButton>
                                                             </ListItemSecondaryAction>
-                                                        </ListItem>
+                                                        </StyledListItem>
                                                     )
                                                 }
                                             </Draggable>
