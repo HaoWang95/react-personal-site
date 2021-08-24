@@ -7,14 +7,14 @@ import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 export default function Note() {
     const [noteList, setNoteList] = useState([])
     useEffect(() => {
-        fetch('http://localhost:8080/notes')
+        fetch('http://localhost:3001/notes')
             .then(res => res.json())
             .then(jsonData => setNoteList(jsonData))
         return () => { }
     }, []);
 
     const handleDelete = async (id) => {
-        await fetch("http://localhost:8080/notes/" + id, {
+        await fetch("http://localhost:3001/notes/" + id, {
             method: 'Delete'
         });
         const newNoteList = noteList.filter(note => note.id !== id);

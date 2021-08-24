@@ -66,7 +66,7 @@ export default function Create() {
         detail === '' ? setDetailError(true) : setDetailError(false);
         if (title && detail) {
             console.log(title, detail, category);
-            fetch("http://localhost:8080/notes", {
+            fetch("http://localhost:3001/notes", {
                 method: 'Post',
                 headers: {"Content-type": "application/json"},
                 body: JSON.stringify({title, detail, category})
