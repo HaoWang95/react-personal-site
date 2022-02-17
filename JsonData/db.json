@@ -1,46 +1,34 @@
 {
   "notes": [
     {
-      "title": "Complete my ninja training",
-      "detail": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took.",
-      "category": "work",
-      "id": 2
-    },
-    {
-      "title": "Order a pizza!",
-      "detail": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-      "category": "todo",
-      "id": 3
-    },
-    {
       "title": "Test react with material ui",
       "detail": "Use material UI library to build React components",
       "category": "work",
       "id": 4
     },
     {
-      "title": "title name",
-      "detail": "detail info",
-      "category": "todo",
-      "id": 5
-    },
-    {
-      "title": "Change React app",
-      "detail": "Update the UI to be draggable",
-      "category": "todo",
-      "id": 6
-    },
-    {
-      "title": "React with microfront end",
-      "detail": "Use react library to build some frontend projects",
-      "category": "todo",
-      "id": 7
-    },
-    {
-      "title": "Meeting with Johan",
+      "title": "Meeting with teammates",
       "detail": "A meeting is scheduled at 4PM, do not forget about it",
       "category": "reminder",
       "id": 8
+    },
+    {
+      "title": "Meeting with my mates",
+      "detail": "Now",
+      "category": "work",
+      "id": 9
+    },
+    {
+      "title": "Interview with clients",
+      "detail": "React+ts+redux+Azure",
+      "category": "reminder",
+      "id": 10
+    },
+    {
+      "title": "Event-driven serverless",
+      "detail": "Create a functional endpoint on aws/azure",
+      "category": "todo",
+      "id": 11
     }
   ]
 }
